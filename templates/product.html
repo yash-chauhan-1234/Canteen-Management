@@ -1,0 +1,43 @@
+
+
+{% extends './common/base.html'%}
+{% load static %}
+
+{% block content%}
+    <section class="py-5 mt-5">
+        <div class="container py-5" style="text-align: center;">
+            <h1>{{data.name}}</h1>
+            <h3>Cuisine Type: {{data.cuisine}}</h3>
+            <!-- <img src="" alt=""> -->
+            <!-- {{data.img}} -->
+            {% if data.img %}
+            <img src="{{data.img.url}}" height="200px" width="200px">
+            {% endif %}
+            <h3>Price: {{data.price}}</h3>
+            <p>Prep Time: {{data.prep_time}}</p>
+
+            <a href=""><button class="btn btn-primary shadow">Add to Cart</button></a>
+
+            <br>
+            <br>
+
+            {% if user.is_superuser or user.is_staff %}
+            <container>
+                <row>
+                    <column>
+                        <a href="{% url 'delete' data.name %}"><button class="btn btn-danger shadow">DELETE</button></a>
+                    </column>
+    
+                    <column>
+                        <a href="{% url 'update' data.name %}"><button class="btn btn-warning shadow">UPDATE</button></a>
+                    </column>
+                </row>
+            </container>
+
+            {% endif %}
+        </div>
+
+
+        
+    </section>
+    {% endblock %}

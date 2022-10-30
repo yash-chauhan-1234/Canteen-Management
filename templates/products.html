@@ -1,0 +1,127 @@
+{% extends './common/base.html'%}
+{% load static %}
+
+{% block content%}
+    <section class="py-5 mt-5" >
+        <div class="container py-5" style="max-width:1000px">
+            <div class="row mb-4 mb-lg-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">Menu</h2>
+                </div>
+            </div>
+
+            <section class="py-5 mt-5">
+              <div class="container py-5">
+                  <div class="row mx-auto" style="max-width: 900px;">
+                      <div class="col">
+                          <!-- <div data-reflow-type="shopping-cart"> -->
+                <div class="tabs" style="display:table; margin: 0 auto">
+                          <ul class="tabs-nav" role="tablist">
+
+                  <li role="presentation" style="display: inline; margin-left: 210px;">
+                    <a id="tab-3-and-4-course-prix-fixe"
+                      class="btn btn-tabs active"
+                      href="{% url 'products' %}"
+                      role="tab"
+                      aria-controls="3-and-4-course-prix-fixe"
+                      aria-selected="true"
+                      data-order="1"
+                      name="indian"
+                      tabindex="0">All Menu</a>
+                  </li>
+                  <br>
+                  <br>
+                  <br>
+                
+                  <li role="presentation" style="display: inline;">
+                    <a id="tab-3-and-4-course-prix-fixe"
+                      class="btn btn-tabs active"
+                      href="{% url 'products_cuis' 'Indian' %}"
+                      role="tab"
+                      aria-controls="3-and-4-course-prix-fixe"
+                      aria-selected="true"
+                      data-order="1"
+                      name="indian"
+                      tabindex="0">Indian</a>
+                  </li>
+                
+                  <li role="presentation" style="display: inline;">
+                    <a id="tab-january2022tasting"
+                      class="btn btn-tabs"
+                      href="{% url 'products_cuis' 'Chinese' %}"
+                      role="tab"
+                      aria-controls="january2022tasting"
+                      aria-selected="false"
+                      name="chinese"
+                      data-order="2"
+                      tabindex="-1">Chinese</a>
+                  </li>
+                
+                  <li role="presentation" style="display: inline;">
+                    <a id="tab-wine-list-copy"
+                      class="btn btn-tabs"
+                      href="{% url 'products_cuis' 'Continental' %}"
+                      role="tab"
+                      aria-controls="wine-list-copy"
+                      aria-selected="false"
+                      name="continental"
+                      data-order="3"
+                      tabindex="-1">Continental</a>
+                  </li>
+                
+                  <li role="presentation" style="display: inline;">
+                    <a id="tab-wine"
+                      class="btn btn-tabs"
+                      href="{% url 'products_cuis' 'Desserts' %}"
+                      role="tab"
+                      aria-controls="wine"
+                      aria-selected="false"
+                      name="dessert"
+                      data-order="4"
+                      tabindex="-1">Desserts</a>
+                  </li>
+                
+
+                
+                  </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+    </section>
+
+    
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+            <!-- {% if menu.count != 0 %} -->
+            {% for item in menu %}
+
+              <tr>
+                <td><a href="{% url 'product' item.name %}">{{item.name}}</a></td>
+                <td>{{item.price}}</td>
+                {% if user.is_authenticated %}
+                <td><button onclick="myFunction()" class="btn btn-primary shadow update-cart" data-product="{{item.id}}" data-action="add" href="#">Add to Cart</button></td>
+                {% endif %}
+              </tr>
+            {% endfor %}
+            <!-- {% endif %} -->
+            </tbody>
+          </table>
+        </div>
+
+        <script>
+          function myFunction()
+          {
+            alert("Product Added to Cart!!")
+          }
+        </script>
+    {% endblock %}

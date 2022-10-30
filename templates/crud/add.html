@@ -1,0 +1,23 @@
+{% extends 'common/base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+
+      <div style="margin-left: 35%;">
+    <h2>Add a Cuisine</h2>
+
+      <form action="{% url 'add' %}" method="POST" style="max-width: 400px; " enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <br>
+      <br>
+      <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+      
+    </div>
+    {% endblock %}

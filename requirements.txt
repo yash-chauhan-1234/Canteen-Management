@@ -1,4 +1,7 @@
 Django==4.1.2
 gunicorn==20.1.0
 django-crispy-forms==1.14.0
+<<<<<<< HEAD
 whitenoise==6.2.0
+=======
+>>>>>>> ac0a0b6406f3329c2ca259abf42cfc555167ffef
